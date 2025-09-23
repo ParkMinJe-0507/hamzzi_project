@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>궁합 테스트 - 햄찌백과</title>
+  <link rel="stylesheet" href="../../indexs.css" />
+  <link rel="stylesheet" href="../../quiz-match.css" />
+</head>
+<body>
+  <hamzzi-header></hamzzi-header>
+
+  <main class="main-container">
+    <section class="section">
+      <h2>✨ 햄스터 궁합 테스트</h2>
+      <p class="section-subtitle">나와 잘 맞는 햄스터는?</p>
+
+      <form id="quiz-form">
+        <div class="quiz-question step active" data-step="1">
+          <p><strong>1. 햄스터를 키우는 공간은?</strong></p>
+          <label><input type="radio" name="q1" value="active"> 넓진 않지만 조용한 공간</label><br>
+          <label><input type="radio" name="q1" value="quiet"> 넓고 자유로운 공간</label>
+          <button type="button" class="btn-primary next-btn">다음</button>
+        </div>
+
+        <div class="quiz-question step" data-step="2">
+          <p><strong>2. 어떤 햄스터를 선호하나요?</strong></p>
+          <label><input type="radio" name="q2" value="quiet"> 손에 잘 안 올라와도 괜찮아요</label><br>
+          <label><input type="radio" name="q2" value="active"> 손에 올라오는 걸 좋아해요</label>
+          <button type="button" class="btn-primary next-btn">다음</button>
+        </div>
+
+        <div class="quiz-question step" data-step="3">
+          <p><strong>3. 햄스터에게 바라는 성격은?</strong></p>
+          <label><input type="radio" name="q3" value="active"> 활발하고 호기심 많은 친구</label><br>
+          <label><input type="radio" name="q3" value="quiet"> 조용하고 얌전한 친구</label>
+          <button type="submit" class="btn-primary">결과 보기</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <hamzzi-footer></hamzzi-footer>
+
+  <script src="../../js/quiz.js"></script>
+  <script src="../../js/theme.js"></script>
+  <script src="../../js/header.js"></script>
+  <script src="../../js/footer.js"></script>
+</body>
+</html>
