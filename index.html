@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>햄찌백과</title>
+  <link rel="stylesheet" href="index.css" />
+  <link rel="icon" type="image/x-icon" href="images/hamzzi.png"> 
+</head>
+
+<body>
+  <hamzzi-header></hamzzi-header>
+  <hamzzi-menu></hamzzi-menu>
+
+  <main class="main-container">
+  <!-- 🐹 메인 배너 -->
+  <section class="intro-banner section">
+    <h1>햄스터에 대해 알고 싶다면?</h1>
+    <p>햄찌백과에서 키우는 법부터 건강관리까지 모두 확인하세요.</p>
+    <a href="info.html" class="btn-primary">입양 정보 보러가기</a>
+  </section>
+
+  <!-- 📚 정보 카드 -->
+  <section class="section alt-bg">
+    <h2>🐹 햄스터 정보 한눈에 보기</h2>
+    <div class="info-grid">
+      <a href="kind.html" class="card">🐹 햄스터 종류</a>
+      <a href="info.html#food" class="card">🍎 먹이 정보</a>
+      <a href="info.html#environment" class="card">🏡 사육 환경</a>
+      <a href="info.html#cleaning" class="card">🧼 건강 관리</a>
+    </div>
+  </section>
+
+   <!-- 🧠 오늘의 상식 -->
+  <section class="daily-tip section">
+    <p class="tip-label">오늘의 상식</p>
+    <div class="tip-content">
+      ❓ 햄스터는 땀을 흘릴 수 있을까요?
+      <strong>❌ 아니요!</strong> 햄스터는 땀샘이 없어 땀을 흘리지 않아요!
+    </div>
+  </section>
+
+  <!-- 📋 퀴즈 -->
+  <section class="section">
+    <h2>📋 입양 전 간단 테스트</h2>
+    <div class="quiz-grid">
+      <a href="quiz-match.html" class="card">✨ 궁합 테스트</a>
+      <a href="quiz-check.html" class="card">📋 입양 전 체크리스트</a>
+      <a href="quiz-cage.html" class="card">🏠 나에게 맞는 케이지</a>
+    </div>
+  </section>
+
+  <!-- 🔥 커뮤니티 -->
+  <section class="community-preview section alt-bg">
+  <h2>커뮤니티 인기 글 🔥</h2>
+  <p class="section-subtitle">다른 사람들의 고민과 팁을 확인해보세요</p>
+  <ul>
+    <li><a href="pages/community/index.html" class="card">[질문] 햄스터가 계속 숨기만 해요 😢</a></li>
+    <li><a href="pages/community/index.html" class="card">[정보] 먹이면 안 되는 음식 정리</a></li>
+  </ul>
+</section>
+
+  <!-- ❓ FAQ -->
+  <section class="faq-section section">
+    <h2>자주 묻는 질문 ❓</h2>
+    <details>
+      <summary>햄스터가 물을 잘 안 마셔요</summary>
+      <p>수분 함량 높은 채소를 소량 급여하거나 물통 점검을 해보세요.</p>
+    </details>
+    <details>
+      <summary>햄스터는 왜 밤에만 활동하나요?</summary>
+      <p>햄스터는 야행성이기 때문에 낮보다는 밤에 더 활발해요!</p>
+    </details>
+  </section>
+  </main>
+  
+  <hamzzi-footer></hamzzi-footer>
+
+  <script type="module" src="js/theme.js"></script>
+  <script type="module" src="js/header.js"></script>
+  <script type="module" src="js/footer.js"></script>
+
+</body>
+</html>

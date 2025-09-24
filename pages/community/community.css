@@ -1,0 +1,144 @@
+/* 커뮤니티 헤더 */
+.community-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+/* ✅ 게시판 테이블 스타일 (새로 추가) */
+.board-table {
+  width: 100%;
+  border-collapse: collapse; /* 테이블 선을 한 줄로 만듭니다 */
+  margin-top: 20px;
+}
+
+.board-table th,
+.board-table td {
+  padding: 12px 10px;
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.board-table th {
+  background-color: #f9f9f9;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+body.dark .board-table th {
+  background-color: #3a3a3a;
+}
+
+/* 제목(title) 열은 왼쪽 정렬 */
+.board-table .title {
+  text-align: left;
+}
+
+/* 테이블의 제목 링크 스타일 */
+.board-table .post-link {
+  text-decoration: none;
+  color: var(--text-color);
+  transition: color 0.2s;
+}
+
+.board-table .post-link:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+/* 게시글 상세 */
+.post-header {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+}
+.post-header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+.post-meta-info {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #777;
+}
+.post-actions {
+  margin-top: 10px;
+}
+.post-actions a,
+.post-actions button {
+  background: none;
+  border: none;
+  color: #888;
+  cursor: pointer;
+  margin-left: 10px;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+.post-content {
+  line-height: 1.8;
+  min-height: 200px;
+}
+
+/* 댓글 */
+#comment-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  margin-bottom: 10px;
+  resize: vertical;
+}
+#comment-form button {
+  float: right;
+}
+.comment-item {
+  padding: 16px;
+  border-bottom: 1px solid var(--border-color);
+}
+.comment-author {
+  font-weight: 600;
+}
+.comment-content {
+  margin: 8px 0;
+}
+
+/* 글쓰기 페이지 */
+#write-form textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 1rem;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    resize: vertical;
+}
+
+/* ✅ 반응형 모바일 테이블 (새로 추가) */
+@media (max-width: 600px) {
+  .board-table thead {
+    display: none; /* 모바일에서는 th 숨김 */
+  }
+  .board-table tr {
+    display: block;
+    margin-bottom: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 10px;
+  }
+  .board-table td {
+    display: block;
+    text-align: right; /* 라벨과 내용을 분리하기 위해 오른쪽 정렬 */
+    border-bottom: none;
+    padding: 6px 0;
+  }
+  .board-table td::before {
+    content: attr(data-label); /* th 대신 라벨을 내용 앞에 추가 */
+    float: left;
+    font-weight: bold;
+  }
+  .board-table .title {
+    text-align: right;
+  }
+}

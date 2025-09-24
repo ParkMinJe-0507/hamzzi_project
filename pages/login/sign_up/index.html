@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>회원가입 - 햄찌백과</title>
+  <link rel="stylesheet" href="/index.css" />
+  <link rel="stylesheet" href="/pages/login/login.css" />
+  <link rel="icon" type="image/x-icon" href="/images/hamzzi.png"> 
+</head>
+
+<body>
+  <hamzzi-header></hamzzi-header>
+
+  <main>
+    <div class="logo-container">
+      <a href="/index.html" class="logo auth-logo">
+        <img class="logo-img" src="/images/hamzzi.png" alt="햄찌백과_로고">
+        <span>햄찌백과</span>
+      </a>
+    </div>
+    
+    <div class="auth-container">
+      <h1>회원가입</h1>
+      <form id="signup-form" class="auth-form">
+        <div class="form-group">
+          <label for="email">이메일</label>
+          <input type="email" id="email" name="email" placeholder="이메일 주소를 입력하세요" required>
+        </div>
+        <div class="form-group">
+          <label for="password">비밀번호</label>
+          <input type="password" id="password" name="password" placeholder="비밀번호 (8자 이상)" required>
+        </div>
+        <div class="form-group">
+          <label for="password-confirm">비밀번호 확인</label>
+          <input type="password" id="password-confirm" name="password-confirm" placeholder="비밀번호를 다시 입력하세요" required>
+        </div>
+        <button type="submit" class="btn-primary">가입하기</button>
+      </form>
+      <div class="auth-links">
+        <span>이미 계정이 있으신가요?</span>
+        <a href="/pages/login/sign_in/index.html">로그인하기</a>
+      </div>
+    </div>
+  </main>
+  
+  <hamzzi-footer></hamzzi-footer>
+
+  <script type="module" src="js/header.js"></script>
+  <script type="module" src="js/footer.js"></script>
+  <script type="module" src="/js/auth.js"></script> </body>
+
+</body>
+</html>

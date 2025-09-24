@@ -1,0 +1,314 @@
+class HeaderComponent extends HTMLElement {
+  connectedCallback() {
+    this.render();
+    this.addEventListeners();
+    this.loadTheme();
+  }
+
+  render() {
+    this.innerHTML = `
+      <style>
+        /* ✅ 헤더 */
+        .main-header {
+          background-color: var(--card-bg);
+          border-bottom: 1px solid var(--border-color);
+          box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+          padding: 0 20px;
+          position: sticky;
+          top: 0;
+          z-index: 1000;
+        }
+        .header-inner {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          max-width: 960px;
+          margin: 0 auto;
+          height: 64px;
+        }
+
+        .logo {
+          display: flex;
+          align-items: center;
+          font-size: 20px;
+          font-weight: 600;
+          gap: 10px;
+          text-decoration: none;
+          color: var(--text-color);
+        }
+        .logo-img {
+          border-radius: 50%;
+          width: 36px;
+          height: 36px;
+        }
+
+        /* ✅ 메뉴 */
+        .main-nav {
+          flex-grow: 1;
+        }
+        .main-menu {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .main-menu > li {
+          position: relative;
+        }
+        .main-menu a {
+          display: block;
+          color: var(--text-color);
+          text-decoration: none;
+          padding: 20px 25px;
+          font-weight: 500;
+          transition: color 0.3s ease;
+        }
+        .main-menu a:hover,
+        .main-menu a.active {
+          color: var(--primary-color);
+        }
+        .sub-menu {
+          list-style: none;
+          margin: 0;
+          padding: 10px 0;
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          background-color: var(--card-bg);
+          border: 1px solid var(--border-color);
+          border-radius: 8px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          min-width: 160px;
+          display: none;
+          z-index: 100;
+          opacity: 0;
+          transform: translateX(-50%) translateY(10px);
+          transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .sub-menu li a {
+          padding: 10px 20px;
+          white-space: nowrap;
+        }
+        .sub-menu li a:hover {
+            background-color: rgba(0,0,0,0.05);
+        }
+        body.dark .sub-menu li a:hover {
+            background-color: rgba(255,255,255,0.08);
+        }
+        .main-menu li:hover > .sub-menu {
+          display: block;
+          opacity: 1;
+          transform: translateX(-50%) translateY(0);
+        }
+
+        /* ✅ 헤더 액션 (로그인, 검색, 테마) */
+        .header-actions {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+        .login-link {
+            text-decoration: none;
+            color: var(--text-color);
+            transition: color 0.2s ease;
+            font-size: 0.9rem;
+            margin-right: 8px;
+            font-weight: 500;
+        }
+        .login-link:hover {
+            color: var(--primary-color);
+        }
+        .action-btn {
+          background: none;
+          border: none;
+          cursor: pointer;
+          font-size: 1.5rem;
+          padding: 8px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: background 0.3s ease;
+          color: inherit;
+        }
+        .action-btn:hover {
+          background-color: rgba(0, 0, 0, 0.05);
+        }
+        body.dark .action-btn:hover {
+          background-color: rgba(255, 255, 255, 0.08);
+        }
+        
+        /* ✅ 검색 오버레이 */
+        .search-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 15vh;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .search-overlay.is-active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .search-container {
+            position: relative;
+            width: 90%;
+            max-width: 600px;
+        }
+        .search-overlay-input {
+            width: 100%;
+            padding: 15px 20px;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+        .close-search {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-size: 2.5rem;
+            color: white;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        /* ✅ 반응형 */
+        @media (max-width: 768px) {
+            .main-nav {
+                display: none;
+            }
+            .header-inner {
+                justify-content: space-between;
+            }
+            .login-link {
+                font-size: 0.85rem;
+            }
+        }
+      </style>
+
+      <header class="main-header">
+        <div class="header-inner">
+          <a href="/index.html" class="logo">
+            <img class="logo-img" src="/images/hamzzi.png" alt="햄찌백과_로고">
+            <span>햄찌백과</span>
+          </a>
+          
+          <nav class="main-nav">
+            <ul class="main-menu">
+              <li><a href="/index.html">홈</a></li>
+              <li>
+                <a href="/pages/information/index.html">햄스터 도감</a>
+                <ul class="sub-menu">
+                  <li><a href="#">햄스터 종류</a></li>
+                  <li><a href="#">먹이 정보</a></li>
+                  <li><a href="#">사육 환경</a></li>
+                  <li><a href="#">건강 관리</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="/pages/community/index.html">커뮤니티</a>
+                <ul class="sub-menu">
+                    <li><a href="#">자유게시판</a></li>
+                    <li><a href="#">정보 공유</a></li>
+                    <li><a href="#">햄스터 자랑</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="/pages/Additional_features/index.html">부가기능</a>
+                <ul class="sub-menu">
+                    <li><a href="#">종합 맞춤 추천</a></li>
+                    <li><a href="#">햄스터 병원 찾기</a></li>
+                </ul>
+              </li>
+              <li><a href="#">FAQ</a></li>
+            </ul>
+          </nav>
+
+          <div class="header-actions">
+            <a href="/pages/login/sign_in/index.html" class="login-link">로그인</a>
+            
+            <button id="search-btn" class="action-btn" aria-label="검색 열기">🔍</button>
+            <button id="toggle-mode" class="action-btn" aria-label="다크모드 전환">
+              <span class="mode-icon">☀️</span>
+            </button>
+          </div>
+        </div>
+      </header>
+      
+      <div id="search-overlay" class="search-overlay">
+        <button id="close-search" class="close-search" aria-label="검색 닫기">&times;</button>
+        <div class="search-container">
+            <input type="text" id="search-input" class="search-overlay-input" placeholder="어떤 정보가 필요하신가요?" />
+        </div>
+      </div>
+    `;
+  }
+
+  addEventListeners() {
+    const searchBtn = this.querySelector('#search-btn');
+    const closeSearchBtn = this.querySelector('#close-search');
+    const searchOverlay = this.querySelector('#search-overlay');
+    const toggleBtn = this.querySelector('#toggle-mode');
+    const searchInput = this.querySelector('#search-input');
+
+    searchBtn.addEventListener('click', () => {
+      searchOverlay.classList.add('is-active');
+      searchInput.focus();
+    });
+
+    closeSearchBtn.addEventListener('click', () => {
+      searchOverlay.classList.remove('is-active');
+    });
+    
+    searchOverlay.addEventListener('click', (e) => {
+        if(e.target === searchOverlay) {
+            searchOverlay.classList.remove('is-active');
+        }
+    });
+
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+      this.updateThemeIcon();
+    });
+
+    searchInput.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        const query = searchInput.value.trim();
+        if (query) {
+          window.location.href = `/search.html?q=${encodeURIComponent(query)}`;
+        }
+      }
+    });
+  }
+
+  updateThemeIcon() {
+    const icon = this.querySelector('.mode-icon');
+    if (document.body.classList.contains('dark')) {
+      icon.textContent = '🌙';
+    } else {
+      icon.textContent = '☀️';
+    }
+  }
+
+  loadTheme() {
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark');
+    }
+    this.updateThemeIcon();
+  }
+}
+customElements.define('hamzzi-header', HeaderComponent);

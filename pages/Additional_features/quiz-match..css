@@ -1,0 +1,87 @@
+/* 퀴즈 폼 기본 설정 */
+.quiz-question {
+  display: none;
+  animation: fadeIn 0.3s ease-in-out;
+  margin-bottom: 24px;
+}
+
+.quiz-question.active {
+  display: block;
+}
+
+/* 전환 애니메이션 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 라디오 버튼 간격 */
+.quiz-question label {
+  display: block;
+  margin: 8px 0;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* 다음 버튼 정렬 */
+.next-btn,
+.btn-primary {
+  margin-top: 20px;
+  display: inline-block;
+}
+
+/* 섹션 서브타이틀 간격 조정 */
+.section-subtitle {
+  margin-bottom: 24px;
+  color: #666;
+  font-size: 1.05rem;
+}
+
+/* 결과 페이지 정리 */
+.result-content h3 {
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+}
+
+.result-content p {
+  font-size: 1.1rem;
+  color: #444;
+  line-height: 1.6;
+}
+
+/* 결과 카드 추가 스타일 */
+.result-card {
+  background: var(--card-bg, #fff);
+  border: 1px solid #ddd;
+  border-radius: 14px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+}
+
+.result-card img.result-img {
+  max-width: 200px;
+  height: auto;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+
+/* 반응형 대응 */
+@media (max-width: 600px) {
+  .quiz-question label {
+    font-size: 0.95rem;
+  }
+  .btn-primary, .next-btn {
+    width: 100%;
+  }
+  .result-card img.result-img {
+    max-width: 100%;
+  }
+}
