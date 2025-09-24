@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>글쓰기 - 햄찌백과</title>
+  <link rel="stylesheet" href="/index.css" />
+  <link rel="stylesheet" href="/pages/community/community.css" />
+  <link rel="icon" type="image/x-icon" href="/images/hamzzi.png">
+</head>
+<body>
+  <hamzzi-header></hamzzi-header>
+
+  <main class="main-container">
+    <section class="section">
+      <h1 id="write-page-title">새 글 작성하기</h1>
+      <form id="write-form" class="auth-form">
+        <div class="form-group">
+          <label for="title">제목</label>
+          <input type="text" id="title" placeholder="제목을 입력하세요" required>
+        </div>
+        <div class="form-group">
+          <label for="content">내용</label>
+          <textarea id="content" rows="10" placeholder="내용을 입력하세요" required></textarea>
+        </div>
+        <button type="submit" class="btn-primary">저장하기</button>
+      </form>
+    </section>
+  </main>
+  
+  <hamzzi-footer></hamzzi-footer>
+
+  <script src="/js/header.js"></script>
+  <script src="/js/footer.js"></script>
+  <script type="module" src="/js/community.js"></script>
+</body>
+</html>

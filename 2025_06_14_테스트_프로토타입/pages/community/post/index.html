@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>게시글 - 햄찌백과</title>
+  <link rel="stylesheet" href="/index.css" />
+  <link rel="stylesheet" href="/pages/community/community.css" />
+  <link rel="icon" type="image/x-icon" href="/images/hamzzi.png">
+</head>
+<body>
+  <hamzzi-header></hamzzi-header>
+
+  <main class="main-container">
+    <section id="post-container" class="section">
+      </section>
+
+    <section id="comment-container" class="section">
+      <h2>댓글</h2>
+      <form id="comment-form">
+        <textarea id="comment-input" placeholder="댓글을 입력하세요..." required></textarea>
+        <button type="submit" class="btn-primary">댓글 작성</button>
+      </form>
+      <div id="comment-list">
+        </div>
+    </section>
+  </main>
+
+  <hamzzi-footer></hamzzi-footer>
+
+  <script src="../../js/header.js"></script>
+  <script src="../../js/footer.js"></script>
+  <script type="module" src="../../js/community.js"></script>
+</body>
+</html>
